@@ -40,7 +40,7 @@ contract MyToken is ERC20 {
     }
 
     // Constructor
-    function MyToken(uint256 _etherVal){
+    function MyToken(){
         owner = msg.sender; 
     }
 
@@ -61,7 +61,7 @@ contract MyToken is ERC20 {
     }
 
      // Transfer the balance from owner's account to another account   
-    function transfer(address _to, uint256 _value) deadlineCheckPoint returns(bool) {
+    function transfer(address _to, uint256 _value) {
         require(balances[msg.sender] >= _value && _value > 0 );
         balances[msg.sender] = balances[msg.sender].sub(_value);
         balances[_to] = balances[_to].add(_value);
@@ -75,7 +75,7 @@ contract MyToken is ERC20 {
     // fees in sub-currencies; the command should fail unless the _from account has
     // deliberately authorized the sender of the message via some mechanism; we propose
     // these standardized APIs for approval:
-    function transferFrom(address _from, address _to, uint256 _value) deadlineCheckPoint returns(bool){
+    function transferFrom(address _from, address _to, uint256 _value) {
         require(allowed[_from][msg.sender] >= _value && balances[_from] >= _value && _value > 0);
         balances[_from] = balances[_from].sub(_value);
         balances[_to] = balances[_to].add(_value);
